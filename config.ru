@@ -5,5 +5,5 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
-use DaYsController
-use UseRsController
+use DaysController
+use UsersController

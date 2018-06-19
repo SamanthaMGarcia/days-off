@@ -1,7 +1,8 @@
-class DaYsController < ApplicationController
+class DaysController < ApplicationController
 
   # GET: /days
   get "/days" do
+    @days = Day.all
     erb :"/days/index.html"
   end
 
@@ -12,11 +13,12 @@ class DaYsController < ApplicationController
 
   # POST: /days
   post "/days" do
-    redirect "/days"
+    redirect "days/#{@day.id}"
   end
 
   # GET: /days/5
   get "/days/:id" do
+    @day = Day.find(params[:id])
     erb :"/days/show.html"
   end
 

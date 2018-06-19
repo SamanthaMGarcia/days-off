@@ -2,12 +2,13 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
-    erb :"/use_rs/index.html"
+    @users = User.all
+    erb :"/users/index.html"
   end
 
   # GET: /users/new
   get "/users/new" do
-    erb :"/use_rs/new.html"
+    erb :"/users/new.html"
   end
 
   # POST: /users
@@ -17,17 +18,19 @@ class UsersController < ApplicationController
 
   # GET: /users/5
   get "/users/:id" do
-    erb :"/use_rs/show.html"
+    @users = User.find(params[:id])
+    erb :"/users/show.html"
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    @owner = Owner.find(params[:id])
     erb :"/users/edit.html"
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
-    redirect "/use_rs/:id"
+    redirect "/users/:id"
   end
 
   # DELETE: /users/5/delete
