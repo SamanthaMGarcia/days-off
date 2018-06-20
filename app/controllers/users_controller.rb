@@ -4,6 +4,15 @@ class UsersController < ApplicationController
     erb :"users/signup.html"
   end
 
+  post "/users" do
+    if User.find_by(work_email: params[:user][:work_email])
+      redirect "/users/signup.html"
+    else
+    user = User.create(params[:user])
+    redirect "/users/account.html"
+  end
+end
+
   # # GET: /users
   # get "/users" do
   #   @users = User.all
