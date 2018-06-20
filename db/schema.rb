@@ -11,15 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619232439) do
-
-  create_table "days", force: :cascade do |t|
-    t.string  "day_off"
-    t.integer "user_id"
-  end
+ActiveRecord::Schema.define(version: 20180620143611) do
 
   create_table "users", force: :cascade do |t|
-    t.string "work_email"
+    t.string "username"
     t.string "password_digest"
   end
 
