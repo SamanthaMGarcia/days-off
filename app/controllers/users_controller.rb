@@ -5,35 +5,19 @@ class UsersController < ApplicationController
   end
 
   post "/users" do
-    if User.find_by(work_email: params[:user][:work_email])
-      redirect "/users/signup.html"
+    user = User.new(params[:user])
+    if user.save
+      session[:user_id] = user.id
+      redirect "/users/#{user.id}.html"
     else
-    user = User.create(params[:user])
-    redirect "/users/account.html"
+    # redirect/render "/signup"
   end
 end
 
-  # # GET: /users
-  # get "/users" do
-  #   @users = User.all
-  #   erb :"/users/index.html"
-  # end
-  #
-  # # GET: /users/new
-  # get "/users/new" do
-  #   erb :"/users/new.html"
-  # end
-  #
-  # # POST: /users
-  # post "/users" do
-  #   redirect "/users"
-  # end
-  #
-  # # GET: /users/5
-  # get "/users/:id" do
-  #   @users = User.find(params[:id])
-  #   erb :"/users/show.html"
-  # end
+  get "/users/:id" do
+    @users = User.find(session[:user_id])
+    erb :"users/show.html"
+  end
   #
   # # GET: /users/5/edit
   # get "/users/:id/edit" do
