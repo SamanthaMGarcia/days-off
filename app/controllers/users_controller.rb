@@ -1,22 +1,22 @@
 class UsersController < ApplicationController
 
-  get "/signup" do
-    erb :"users/signup.html"
+  get '/signup' do
+    erb :'users/signup.html'
   end
 
-  post "/users" do
+  post '/users' do
     user = User.new(params[:user])
     if user.save
       session[:user_id] = user.id
-      redirect "/users/#{user.id}.html"
+      redirect "/users/#{user.id}"
     else
     # redirect "/signup"
   end
 end
 
-  get "/users/:id" do
+  get '/users/:id' do
     @user = User.find(session[:user_id])
-    erb :"users/show.html"
+    erb :'users/show.html'
   end
   #
   # # GET: /users/5/edit
