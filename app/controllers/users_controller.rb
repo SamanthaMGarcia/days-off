@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/users/#{user.id}.html"
     else
-    # redirect/render "/signup"
+    # redirect "/signup"
   end
 end
 
