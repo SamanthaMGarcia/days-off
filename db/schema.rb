@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620143611) do
+ActiveRecord::Schema.define(version: 20180620152323) do
+
+  create_table "days", force: :cascade do |t|
+    t.string  "date"
+    t.string  "month"
+    t.integer "year"
+  end
+
+  create_table "user_days", force: :cascade do |t|
+    t.integer "pencil_id"
+    t.integer "user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
