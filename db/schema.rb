@@ -17,10 +17,6 @@ ActiveRecord::Schema.define(version: 20180620154054) do
     t.integer "month"
     t.integer "date"
     t.integer "year"
-  end
-
-  create_table "user_days", force: :cascade do |t|
-    t.integer "day_id"
     t.integer "user_id"
   end
 

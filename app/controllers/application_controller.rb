@@ -13,6 +13,16 @@ class ApplicationController < Sinatra::Base
       erb :welcome
     end
 
+    # helpers do
+    # #   def logged_in?
+    # #     !!session[:user_id]
+    # #   end
+    # #
+    #   def current_user
+    #     @user ||= User.find(session[:user_id])
+    #   end
+    # end
+
     # post "/signup" do
     #   if params[:work_email] == "" || params[:password] == ""
     #     redirect '/failure'
@@ -51,14 +61,6 @@ class ApplicationController < Sinatra::Base
     #   redirect "/"
     # end
     #
-    # helpers do
-    #   def logged_in?
-    #     !!session[:user_id]
-    #   end
     #
-    #   def current_user
-    #     User.find(session[:user_id])
-    #   end
-    # end
 
   end
