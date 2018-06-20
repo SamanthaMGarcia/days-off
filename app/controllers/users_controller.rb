@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  get "/signup" do
+    erb :"users/signup.html"
+  end
+
   # GET: /users
   get "/users" do
     @users = User.all
