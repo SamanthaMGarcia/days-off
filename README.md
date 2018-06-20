@@ -1,3 +1,5 @@
+<h1>Days Off</h1>
+
 The Days Off ruby gem is designed to allow employees to log their days off and make them available for viewing by fellow employees.
 
 Employees are required to signup first and thereafter, days off logged can be submitted by logging in rather than signing up.
