@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    erb :'users/signup.html'
+    erb :'users/signup'
   end
 
   post '/users' do
@@ -16,7 +16,7 @@ end
 
   get '/users/:id' do
     @user = User.find(session[:user_id])
-    erb :'users/show.html'
+    erb :'users/show'
   end
   #
   # # GET: /users/5/edit
