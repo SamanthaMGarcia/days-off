@@ -1,2 +1,2 @@
-class DAY < ActiveRecord::Base
+class Day < ActiveRecord::Base
 end
