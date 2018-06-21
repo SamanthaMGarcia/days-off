@@ -6,3 +6,7 @@
   Year: <input type="integer" name="daysoff[year]" /><br />
   <input type="submit" />
 </form>
+
+<% @ user.days.each do |day| %>
+ <p> Day Off: <%= day.date%>/<%=day.month%>/<%=day.year%></p>
+<% end %>

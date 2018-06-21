@@ -1,15 +1,15 @@
 class DaysController < ApplicationController
 
   post '/days' do
-    @user = current_user
-    @day = Day.current_user(params[:day])
+    user = current_user
+    @day = current_user.days.build(params[:day])
     if @day.save
 
-    # day.user_id = user_id
+    day.user_id = user_id
 
-    redirect "/users/#{current_user.id}"
-  else :"/users"
-  end
+        redirect "/users/#{current_user.id}"
+      else erb :"/users"
+    end
   end
 
   get '/days' do

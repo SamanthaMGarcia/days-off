@@ -5,5 +5,5 @@ require './config/environment'
 # end
 
 use UsersController
-# use DaysController
+use DaysController
 run ApplicationController
