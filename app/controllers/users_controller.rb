@@ -20,10 +20,10 @@ end
     erb :'users/show'
   end
 
-  get "/users/:id/edit" do
-    @user = User.find(params[:id])
-    erb :'users/edit'
-  end
+  # get "/users/:id/edit" do
+  #   @user = User.find(params[:id])
+  #   erb :'users/edit'
+  # end
   #
   # # PATCH: /users/5
   # patch "/users/:id" do
