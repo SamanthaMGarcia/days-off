@@ -1,1 +1,8 @@
-<h1>This is the Model's index page.</h1>
+<h1>Listed Below are your Logged Days Off</h1>
+<ul>
+
+<% @days.each_with_index do |day, i| %>
+<li><%= i + 1 %>, <%=day%></li>
+<% end %>
+
+</ul>

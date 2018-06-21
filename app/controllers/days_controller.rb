@@ -1,7 +1,8 @@
 class DaysController < ApplicationController
 
   post '/days' do
-    user = current_user
+    @user = current_user
+    binding.pry
     day = Day.new(params[:day])
 
     day.user_id = user_id
@@ -9,12 +10,11 @@ class DaysController < ApplicationController
     redirect "/users/#{user.id}"
   end
 
-  # GET: /days
-  # get "/days" do
-  #   @days = Day.all
-  #   erb :"/days/index.html"
-  # end
-  #
+  get '/days' do
+    @days = Day.all
+    erb :"/days/index"
+  end
+
   # # GET: /days/new
   # get "/days/new" do
   #   erb :"/days/new.html"
