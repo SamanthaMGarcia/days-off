@@ -1,15 +1,13 @@
 class DaysController < ApplicationController
 
-  # post '/days' do
-  #   user = current_user
-  #   day = Day.new(params[:day])
-  #
-  #   day.user_id = user_id
-  #
-  #   redirect "/users/#{user.id}"
-  #
-  #
-  # end
+  post '/days' do
+    user = current_user
+    day = Day.new(params[:day])
+
+    day.user_id = user_id
+
+    redirect "/users/#{user.id}"
+  end
 
   # GET: /days
   # get "/days" do

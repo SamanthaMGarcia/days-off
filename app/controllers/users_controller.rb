@@ -20,9 +20,6 @@ end
     erb :'users/show'
   end
 
-  # post '/users/dayoff'
-  #   @user =
-
   get "/users/:id/edit" do
     @user = User.find(params[:id])
     erb :'users/edit'
