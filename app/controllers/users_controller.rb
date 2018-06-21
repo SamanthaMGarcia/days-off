@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    @user = User.new
+    # @user = User.new
     erb :'users/signup'
   end
 
@@ -11,20 +11,22 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"
     else
-    erb :'users/signup'
+      erb :'users/signup'
   end
 end
 
-  get '/users/:id' do
+  get "/users/:id" do
     @user = User.find(session[:user_id])
     erb :'users/show'
   end
-  #
-  # # GET: /users/5/edit
-  # get "/users/:id/edit" do
-  #   @owner = Owner.find(params[:id])
-  #   erb :"/users/edit.html"
-  # end
+
+  # post '/users/dayoff'
+  #   @user =
+
+  get "/users/:id/edit" do
+    @user = User.find(params[:id])
+    erb :'users/edit'
+  end
   #
   # # PATCH: /users/5
   # patch "/users/:id" do
