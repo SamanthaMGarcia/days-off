@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   get '/signup' do
+    @user = User.new
     erb :'users/signup'
   end
 
