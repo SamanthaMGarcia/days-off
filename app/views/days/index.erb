@@ -1,8 +1,8 @@
 <h1>Listed Below are your Logged Days Off</h1>
 <ul>
 
-<% @daysoff.each_with_index do |day, i| %>
-<li><%= i + 1 %>. <%=day%></li>
+<% @days.each_with_index do |day, i| %>
+<li><%= i + 1 %>. <%=@day.month%>/<%=@day.date%>/<%=@day.year%></li>
 <% end %>
 
 </ul>
