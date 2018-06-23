@@ -4,8 +4,9 @@ class DaysController < ApplicationController
     @user = current_user
     binding.pry
     @day = Day.create(params[:daysoff])
-    current_user.day.build(params[:daysoff])
-    # @day.user.build(user_id: current_user.id)
+    @day.user.build(user_id: current_user.id)
+    # current_user.day.build(params[:daysoff])
+
     if @day.save
 
       @day.user_id = user_id
