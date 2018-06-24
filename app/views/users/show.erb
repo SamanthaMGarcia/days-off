@@ -1,8 +1,12 @@
 <h1>Welcome <%= @user.username %></h1>
 
 <form method="POST" action="/days">
-  Month: <input type="integer" name="daysoff[date]" /><br />
-  Date: <input type="integer" name="daysoff[month]" /><br />
-  Year: <input type="integer" name="daysoff[year]" /><br />
+  Month: <input type="integer" name="days[date]" /><br />
+  Date: <input type="integer" name="days[month]" /><br />
+  Year: <input type="integer" name="days[year]" /><br />
   <input type="submit" />
 </form>
+
+<% @user.days.each do |day| %>
+<p> Day Off: <%=@day.date%>/<%=@day.month%>/<%=@day.year%></p>
+<%end %>

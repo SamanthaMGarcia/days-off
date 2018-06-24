@@ -2,8 +2,7 @@ class DaysController < ApplicationController
 
   post '/days' do
     @user = current_user
-    binding.pry
-    @day = Day.create(params[:daysoff])
+    @day = Day.create(params[:days])
     @day.user.build(user_id: current_user.id)
     # current_user.day.build(params[:daysoff])
 
