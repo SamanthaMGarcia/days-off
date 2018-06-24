@@ -5,9 +5,13 @@ class UsersController < ApplicationController
     erb :'users/signup'
   end
 
-  get "/login" do
-    erb :login
-  end
+  get '/login' do
+   if !logged_in?
+     erb :'login'
+   else
+     redirect to '/users/show'
+   end
+ end
 
   post "/login" do
     @user = User.find_by(username: params[:username])
@@ -15,8 +19,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect to "/show"
     else
-      #show errors
-      redirect '/login'
+      erb :failure
     end
   end
 
@@ -35,10 +38,10 @@ end
     erb :'users/show'
   end
 
-  # get "/users/:id/edit" do
-  #   @user = User.find(params[:id])
-  #   erb :'users/edit'
-  # end
+  get "/users/:id/edit" do
+    @user = User.find(params[:id])
+    erb :'users/edit'
+  end
   #
   # # PATCH: /users/5
   # patch "/users/:id" do

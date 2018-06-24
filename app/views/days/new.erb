@@ -1,5 +1,12 @@
 <h1>Welcome <%= @user.username %></h1>
 
+<% if @day && @day.errors %>
+  <% @day.errors.full_messages.each do |message| %>
+<% end %>
+
+<% end %>
+
+
 <form method="POST" action="/days">
   Month: <input type="integer" name="days[date]" /><br />
   Date: <input type="integer" name="days[month]" /><br />

@@ -21,15 +21,6 @@ class DaysController < ApplicationController
     erb :"/days/index"
   end
 
-  # # GET: /days/new
-  # get "/days/new" do
-  #   erb :"/days/new.html"
-  # end
-  #
-  # # POST: /days
-  # post "/days" do
-  #   redirect "days/#{@day.id}"
-  # end
   #
   # # GET: /days/5
   # get "/days/:id" do
