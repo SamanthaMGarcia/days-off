@@ -1,5 +1,11 @@
 class DaysController < ApplicationController
 
+  get '/days' do
+    binding.pry
+    @day = Day.all
+    erb :'/days/index'
+  end
+
   post '/days' do
     @user = current_user
     @day = Day.create(params[:days])
@@ -12,14 +18,20 @@ class DaysController < ApplicationController
     end
   end
 
-  get '/days/new' do
-    erb :'days/new'
+  get "/days/:id" do
+    @user = User.find_by_id(params[:id])
+    erb :'days/show'
   end
 
-  get '/days' do
-    @day = Day.all
-    erb :"/days/index"
+  get "/days/:id/edit" do
+    @user = User.find_by_id(params[:id])
+    erb :'days/edit'
   end
+
+
+  # get '/days/new' do
+  #   erb :'days/new'
+  # end
 
   #
   # # GET: /days/5
