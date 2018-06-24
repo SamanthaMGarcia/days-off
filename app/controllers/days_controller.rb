@@ -11,8 +11,12 @@ class DaysController < ApplicationController
       @day.user_id = user_id
 
         redirect "/users/#{current_user.id}"
-      else erb :"/users"
+      else erb :'/days/new'
     end
+  end
+
+  get '/days/new' do
+    erb :'days/new'
   end
 
   get '/days' do

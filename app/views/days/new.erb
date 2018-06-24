@@ -1,1 +1,8 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Welcome <%= @user.username %></h1>
+
+<form method="POST" action="/days">
+  Month: <input type="integer" name="days[date]" /><br />
+  Date: <input type="integer" name="days[month]" /><br />
+  Year: <input type="integer" name="days[year]" /><br />
+  <input type="submit" />
+</form>

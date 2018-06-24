@@ -15,7 +15,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect to "/show"
     else
-      redirect to "/failure"
+      #show errors
+      redirect '/login'
     end
   end
 
