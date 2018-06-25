@@ -1,7 +1,6 @@
 class DaysController < ApplicationController
 
   get '/days' do
-    binding.pry
     @day = Day.all
     erb :'/days/index'
   end
@@ -9,7 +8,7 @@ class DaysController < ApplicationController
   post '/days' do
     @user = current_user
     @day = Day.create(params[:days])
-    current_user.days << @day
+    @current_user.days << @day
 
     if @day.save
 
@@ -20,18 +19,18 @@ class DaysController < ApplicationController
 
   get "/days/:id" do
     @user = User.find_by_id(params[:id])
-    erb :'days/show'
+    erb :'/days/show'
   end
 
   get "/days/:id/edit" do
     @user = User.find_by_id(params[:id])
-    erb :'days/edit'
+    erb :'/days/edit'
   end
 
-
-  # get '/days/new' do
-  #   erb :'days/new'
-  # end
+  get '/days/:id/new' do
+    @user = current_user
+    erb :'days/new'
+  end
 
   #
   # # GET: /days/5
