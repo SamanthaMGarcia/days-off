@@ -22,7 +22,7 @@ class DaysController < ApplicationController
     erb :'/days/show'
   end
 
-  get '/days/:id/new' do
+  get "/days/:id/new" do
     @user = current_user
     erb :'days/new'
   end
@@ -31,6 +31,16 @@ class DaysController < ApplicationController
     @user = User.find_by_id(params[:id])
     erb :'/days/edit'
   end
+
+  # patch "/days/:id" do
+  #   if logged_in
+  #   @day = Day.find(params[:id])
+  #   unless Day.valid_params?(params)
+  #     redirect to error message
+  #   end
+  #   @day.update
+  #   redirect "/days/#{@day.id}"
+  # end
 
   # post '/users' do
   #   @user = User.new(params[:user])
