@@ -6,29 +6,35 @@ class DaysController < ApplicationController
   end
 
   post '/days' do
-    @user = current_user
-    @day = Day.create(params[:days])
-    @current_user.days << @day
+    if logged_in?
+      @user = current_user
+      @day = Day.create(params[:days])
+      @user.days << @day
 
-    if @day.save
+      if @day.save
 
-        redirect "/users/#{current_user.id}"
-      else erb :'/days/new'
-    end
+          redirect "/users/#{current_user.id}"
+        else
+          erb :'/days/new'
+      end
+    else
+      redirect to '/login'
   end
 
-  get "/days/:id" do
-    @user = User.find_by_id(params[:id])
-    erb :'/days/show'
-  end
-
-  get "/days/:id/new" do
+  get "/days/new" do
     @user = current_user
     erb :'days/new'
   end
 
+  get "/days/:id" do
+    @day =  Day.find_by_id(params[:id])
+    @user = current_user
+    erb :'/days/show'
+  end
+
   get "/days/:id/edit" do
-    @user = User.find_by_id(params[:id])
+    @user = current_user
+    @day = Day.find_by_id(params[:id])
     erb :'/days/edit'
   end
 
