@@ -36,27 +36,12 @@ class UsersController < ApplicationController
     end
   end
 
-  # post '/users' do
-  #   @user = User.new(params[:user])
-  #   if @user.save
-  #     session[:user_id] = @user.id
-  #     redirect "/users/#{@user.id}"
-  #   else
-  #     erb :'users/signup'
-  #   end
-  # end
-  #
-
-
-
-  #
-  # # PATCH: /users/5
-  # patch "/users/:id" do
-  #   redirect "/users/:id"
-  # end
-  #
-  # # DELETE: /users/5/delete
-  # delete "/users/:id/delete" do
-  #   redirect "/users"
-  # end
+  get "/logout" do
+     if logged_in?
+       session.clear
+       redirect "/login"
+     else
+      redirect '/'
+    end
+  end
 end

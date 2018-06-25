@@ -22,16 +22,39 @@ class DaysController < ApplicationController
     erb :'/days/show'
   end
 
-  get "/days/:id/edit" do
-    @user = User.find_by_id(params[:id])
-    erb :'/days/edit'
-  end
-
   get '/days/:id/new' do
     @user = current_user
     erb :'days/new'
   end
 
+  get "/days/:id/edit" do
+    @user = User.find_by_id(params[:id])
+    erb :'/days/edit'
+  end
+
+  # post '/users' do
+  #   @user = User.new(params[:user])
+  #   if @user.save
+  #     session[:user_id] = @user.id
+  #     redirect "/users/#{@user.id}"
+  #   else
+  #     erb :'users/signup'
+  #   end
+  # end
+  #
+
+
+
+  #
+  # # PATCH: /users/5
+  # patch "/users/:id" do
+  #   redirect "/users/:id"
+  # end
+  #
+  # # DELETE: /users/5/delete
+  # delete "/users/:id/delete" do
+  #   redirect "/users"
+  # end
   #
   # # GET: /days/5
   # get "/days/:id" do
