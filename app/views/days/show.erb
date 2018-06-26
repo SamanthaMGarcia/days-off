@@ -2,6 +2,5 @@
 
 <% @user.days.each do |day| %>
 <p> Day Off: <%=day.month%>/<%=day.date%>/<%=day.year%><h5><a href="/days/<%=day.id%>/edit">Edit</a></h5></p>
-<%end %>
-
+<% end %>
 <p><h5><a href="/logout">Log Out</a></h5></p>

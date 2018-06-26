@@ -52,21 +52,10 @@ end
       redirect to '/login'
     end
   end
-  #
-  # patch "/days/:id" do
-  #     if !logged_in?
-  #       redirect to '/login'
-  #     else
-  #       @day = Day.find(params[:id])
-  #     end
-  #       @day.update
-  #     redirect "/days/#{@day.id}"
-  #   end
 
   patch '/days/:id' do
    if logged_in?
      if params[:days] == ""
-       binding.pry
        redirect to "/days/#@day.id}/edit"
      else
        @day = Day.find_by_id(params[:id])
@@ -80,54 +69,20 @@ end
          redirect to '/days'
        end
      end
-   else
+    else
      redirect to '/login'
    end
- end
+  end
 
-
-  # post '/users' do
-  #   @user = User.new(params[:user])
-  #   if @user.save
-  #     session[:user_id] = @user.id
-  #     redirect "/users/#{@user.id}"
-  #   else
-  #     erb :'users/signup'
-  #   end
-  # end
-  #
-
-
-
-  #
-  # # PATCH: /users/5
-  # patch "/users/:id" do
-  #   redirect "/users/:id"
-  # end
-  #
-  # # DELETE: /users/5/delete
-  # delete "/users/:id/delete" do
-  #   redirect "/users"
-  # end
-  #
-  # # GET: /days/5
-  # get "/days/:id" do
-  #   @day = Day.find(params[:id])
-  #   erb :"/days/show.html"
-  # end
-  #
-  # # GET: /days/5/edit
-  # get "/days/:id/edit" do
-  #   erb :"/days/edit.html"
-  # end
-  #
-  # # PATCH: /days/5
-  # patch "/days/:id" do
-  #   redirect "/days/:id"
-  # end
-  #
-  # # DELETE: /days/5/delete
-  # delete "/days/:id/delete" do
-  #   redirect "/days"
-  # end
-end
+    delete '/days/:id/delete' do
+      if logged_in?
+        @day = Day.find_by_id(params[:id])
+        if @day && @day.user == current_user
+          @day.delete
+        end
+        redirect to '/days'
+      else
+        redirect to '/login'
+      end
+    end
+  end
