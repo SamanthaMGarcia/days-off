@@ -74,9 +74,7 @@ end
    end
   end
 
-
-
-    delete '/days/:id/delete' do
+    delete "/days/:id/delete" do
       if logged_in?
         @day = Day.find_by_id(params[:id])
         if @day && @day.user == current_user

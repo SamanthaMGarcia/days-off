@@ -14,14 +14,16 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.create(username: params[:user][:username], password: params[:user][:password])
-    @user.save
-    session[:user_id] = @user.id
-    redirect to "/users/#{@user.id}"
+    if @user = User.create(username: params[:user][:username], password: params[:user][:password])
+      @user.save
+      session[:user_id] = @user.id
+      redirect to "/users/#{@user.id}"
+    else
+      flash[:message] = "It looks like there was an error, please try again."
+    end
   end
 
   get '/login' do
-  # @user = User.find_by(username: params[:username])
    if !logged_in?
      erb :'/users/login'
    else
@@ -35,7 +37,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect to "/users/#{@user.id}"
     else
-      erb :failure
+      flash[:message] = "It looks like there was an error, please try again."
     end
   end
 

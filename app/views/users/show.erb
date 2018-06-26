@@ -1,9 +1,8 @@
 <h1>Welcome <%= @user.username %></h1>
 
 <% @user.days.each do |day| %>
-<p> Day Off: <%=day.date%>/<%=day.month%>/<%=day.year%><h5><a href="/days/<%=day.id%>/edit">Edit</a></h5></p>
+<p> Day Off: <%=day.month%>/<%=day.date%>/<%=day.year%><h5><a href="/days/<%=day.id%>/edit">Edit</a></h5></p>
 <%end %>
 
 <p><h5><a href="/days/new">Log Days</a></h5></p>
-
 <p><h5><a href="/logout">Log Out</a></h5></p>
