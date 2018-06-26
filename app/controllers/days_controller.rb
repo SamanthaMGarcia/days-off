@@ -60,7 +60,7 @@ end
      else
        @day = Day.find_by_id(params[:id])
        if @day && @day.user == current_user
-         if @day.update(days: params[:days])
+         if @day.update(params[:days])
            redirect to "/days/#{@day.id}"
          else
            redirect to "/days/#{@day.id}/edit"
@@ -73,6 +73,8 @@ end
      redirect to '/login'
    end
   end
+
+
 
     delete '/days/:id/delete' do
       if logged_in?

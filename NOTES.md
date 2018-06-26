@@ -6,30 +6,6 @@ Still need to do:
 
 -index visible to everyone
 
-
-  patch '/days/:id' do
-     if logged_in?
-         @ day = Day.find_by(:id params[:id])
-         @ user = current_user
-
-        if params(days: params[:month]) != ""
-          @ day.update(days: params[:month])
-        end
-
-        if params(days: params[:date]) != ""
-          @ day.update(days: params[:date])
-        end
-
-        if params(days: params[:year]) != ""
-          @ day.update(days: params[:year])
-        end
-
-        redirect to "/days/#{day.id}"
-    else
-      redirect to '/login'
-    end
- end
-
 patch '/days/:id' do
  if logged_in?
    if params[:days] == ""
@@ -37,7 +13,7 @@ patch '/days/:id' do
    else
      @ day = Day.find_by_id(params[:id])
      if @ day && @ day.user == current_user
-       if @ day.update(days: params[:days])
+       if @ day.update(days: params[:month],days: params[:date],days: params[:year])
          redirect to "/days/#{@day.id}"
        else
          redirect to "/days/#{@day.id}/edit"
@@ -46,7 +22,29 @@ patch '/days/:id' do
        redirect to '/days'
      end
    end
- else
+  else
    redirect to '/login'
  end
+end
+
+patch "/days/:id" do
+  if logged_in?
+    @ day = Day.find_by_id(params[:id])
+    @ user = current_user
+
+    if params(month: params[:month]) != ""
+      @ day.update(month: params[:month])
+    end
+
+    if params(date: params[:date]) != ""
+      @ day.update(date: params[:date])
+    end
+
+    if params(year: params[:year]) != ""
+      @ day.update(year: params[:year])
+    end
+    redirect to "days/#{day.id}"
+  else
+    redirect to '/login'
+  end
 end

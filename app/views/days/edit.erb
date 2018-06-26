@@ -2,8 +2,8 @@
 
 <form method="POST" action="/days/<%=@user.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
-  Month: <input type="integer" name="daysoff[date]" /><br />
-  Date: <input type="integer" name="daysoff[month]" /><br />
-  Year: <input type="integer" name="daysoff[year]" /><br />
+  Month: <input type="integer" name="days[month]" /><br />
+  Date: <input type="integer" name="days[date]" /><br />
+  Year: <input type="integer" name="days[year]" /><br />
   <input type="submit" value="Update"/>
 </form>
