@@ -2,9 +2,9 @@
 
 <form method="POST" action="/days/<%=@day.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
-  Month: <input type="integer" name="days[month]" /><br />
-  Date: <input type="integer" name="days[date]" /><br />
-  Year: <input type="integer" name="days[year]" /><br />
+  Month: <input type="integer" value="<%=@day.month%>" name="days[month]" /><br />
+  Date: <input type="integer" value="<%=@day.date%>"  name="days[date]" /><br />
+  Year: <input type="integer" value="<%=@day.year%>" name="days[year]" /><br />
   <input type="submit" value="Update">
 </form>
 
