@@ -1,8 +1,0 @@
-<p><%=@day %>
-
-<form method="POST" action="/days/<%=@day.id%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete"
-</form>
-
-<a href="/days/<%=@day.id%>/edit">Edit</a>

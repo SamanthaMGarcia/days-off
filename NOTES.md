@@ -1,8 +1,4 @@
 Still need to do:
 
--delete function
-  both must have protections
-
--index visible to everyone
-
--flash messages
+-protections
+-signup route if a field is missing (flash message not working)
