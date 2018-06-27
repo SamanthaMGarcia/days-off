@@ -5,5 +5,10 @@
   Month: <input type="integer" name="days[month]" /><br />
   Date: <input type="integer" name="days[date]" /><br />
   Year: <input type="integer" name="days[year]" /><br />
-  <input type="submit" value="Update"/>
+  <input type="submit" value="Update">
+</form>
+
+  <form method="POST" action="/days/<%=@day.id%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
 </form>
