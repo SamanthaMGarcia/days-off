@@ -38,6 +38,7 @@ class UsersController < ApplicationController
       redirect to "/users/#{@user.id}"
     else
       flash[:message] = "It looks like there was an error, please try again."
+      redirect to "/login"
     end
   end
 

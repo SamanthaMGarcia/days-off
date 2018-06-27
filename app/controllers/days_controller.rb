@@ -68,6 +68,7 @@ end
            redirect to "/days/#{@day.id}/edit"
          end
        else
+         flash[:message] = "You don't have permission to edit this day."
          redirect to '/days'
        end
      end

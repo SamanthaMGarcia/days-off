@@ -1,6 +1,6 @@
 <h1><%= @user.username %>, please submit your amended days off below.</h1>
 
-<form method="POST" action="/days/<%=@user.id%>">
+<form method="POST" action="/days/<%=@day.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
   Month: <input type="integer" name="days[month]" /><br />
   Date: <input type="integer" name="days[date]" /><br />

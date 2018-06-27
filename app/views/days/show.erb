@@ -1,7 +1,13 @@
 <h1>Welcome <%= @user.username %></h1>
 
 <% @user.days.each do |day| %>
-<p><h3>Day Off: <%=day.month%>/<%=day.date%>/<%=day.year%></h3><h5><a href="/days/<%=day.id%>/edit">Edit</a></h5></p><h5><p><a href="/days/<%=@day.id%>/delete">Delete</a></h5></p>
+<p><h3>Day Off: <%=day.month%>/<%=day.date%>/<%=day.year%></h3><h5><a href="/days/<%=day.id%>/edit">Edit</a></h5></p>
+
+<form method="POST" action="/days/<%=day.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form>
+
 <% end %>
 
 <p><h5><a href="/days">View Logged Days</a></h5></p>
