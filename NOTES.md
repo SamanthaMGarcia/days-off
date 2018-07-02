@@ -1,4 +1,5 @@
-Still need to do:
-
--protections
--signup route if a field is missing (flash message not working)
+<% if @ user && !@user.errors.empty? %>
+  <% @ user.errors.full_messages.each do |message| %>
+  <p><%= message%> </p>
+  <% end %>
+<% end %>
