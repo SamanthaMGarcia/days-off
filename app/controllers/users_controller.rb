@@ -14,12 +14,13 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if @user = User.create(username: params[:user][:username], password: params[:user][:password])
-      @user.save
+    @user = User.create(username: params[:user][:username], password: params[:user][:password])
+      if @user.save
       session[:user_id] = @user.id
       redirect to "/users/#{@user.id}"
     else
       flash[:message] = "It looks like there was an error, please try again."
+      redirect to "/signup"
     end
   end
 
