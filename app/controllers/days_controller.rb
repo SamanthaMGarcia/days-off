@@ -12,17 +12,18 @@ class DaysController < ApplicationController
   post '/days' do
     if logged_in?
       @user = current_user
-      @day = Day.create(params[:days])
-      @user.days << @day
-      if @day.save
-          redirect "/users/#{current_user.id}"
+          @day = Day.create(params[:days])
+          @user.days << @day
+          if @day.save
+            redirect "/users/#{current_user.id}"
         else
-          erb :'/days/new'
-      end
+          flash[:message] = "Please ensure all fields are filled before submitting."
+          redirect to '/days/new'
+        end
     else
       redirect to '/login'
+    end
   end
-end
 
   get "/days/new" do
     if logged_in?
@@ -56,9 +57,6 @@ end
   patch '/days/:id' do
     @day = Day.find_by_id(params[:id])
    if logged_in? && current_user.id == @day.user.id
-     if params[:days] == ""
-       redirect to "/days/#@day.id}/edit"
-     else
        if @day && @day.user == current_user
          if @day.update(params[:days])
            redirect to "/days/#{@day.id}"
@@ -70,7 +68,6 @@ end
          flash[:message] = "You don't have permission to edit this day."
          redirect to '/days'
        end
-     end
     else
      redirect to '/login'
    end
