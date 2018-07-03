@@ -16,18 +16,18 @@ class ApplicationController < Sinatra::Base
     flash[:message] = "It looks like there was an error, please try again."
   end
 
-    get "/" do
-      erb :'index'
+  get "/" do
+    erb :'index'
+  end
+
+  helpers do
+
+    def logged_in?
+      !!current_user
     end
 
-    helpers do
-
-      def logged_in?
-        !!current_user
-      end
-
-      def current_user
-        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-      end
+    def current_user
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
   end
+end
