@@ -11,10 +11,9 @@ class DaysController < ApplicationController
 
   post '/days' do
     if logged_in?
-      @user = current_user
-      @day = Day.create(params[:days])
-      @user.days << @day
+      @day = @current_user.days.build(params[:days])
       if @day.save
+        flash[:message] = "Your day, #{@current_user.username}, has been added!"
         redirect "/users/#{current_user.id}"
       else
         flash[:message] = "Please ensure all fields are filled in before submitting."
