@@ -1,7 +1,9 @@
 <h1><%= @user.username %>, please submit your amended days off below.</h1>
 
 <form method="POST" action="/days/<%=@day.id%>">
+  <!-- method and action combine to form the route -->
   <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <!-- simulates a PATCH request  -->
   Month: <input type="integer" value="<%=@day.month%>" name="days[month]" /><br />
   Date: <input type="integer" value="<%=@day.date%>"  name="days[date]" /><br />
   Year: <input type="integer" value="<%=@day.year%>" name="days[year]" /><br />
