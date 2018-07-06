@@ -17,7 +17,7 @@ class DaysController < ApplicationController
       if @day.save
         redirect "/users/#{current_user.id}"
       else
-        flash[:message] = "Please ensure all fields are filled before submitting."
+        flash[:message] = "Please ensure all fields are filled in before submitting."
         redirect to '/days/new'
       end
     else
@@ -61,7 +61,7 @@ class DaysController < ApplicationController
         if @day.update(params[:days])
           redirect to "/days/#{@day.id}"
         else
-          flash[:message] = "Please ensure all fields are filled before submitting."
+          flash[:message] = "Please ensure all fields are filled in before submitting."
           redirect to "/days/#{@day.id}/edit"
         end
       else
